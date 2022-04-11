@@ -1,0 +1,14 @@
+Flight Side Pojos
+
+1. Airport
+2. Flight Details
+3. SeatStatus
+4. Seat
+5. SeatClassType
+6. TicketBooking
+
+User Side Pojos
+1. Customer
+2. Search
+3. SearchedFlightDetails
+4. Travel Customer
