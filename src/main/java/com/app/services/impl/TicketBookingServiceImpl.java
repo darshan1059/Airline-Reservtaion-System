@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dao.TicketBookingRepository;
 import com.app.pojos.TicketBooking;
+import com.app.pojos.TravelCustomer;
 import com.app.services.TicketBookingService;
 
 @Transactional
@@ -50,6 +51,11 @@ public class TicketBookingServiceImpl implements TicketBookingService {
 	@Override
 	public void deleteTicketById(Integer id) {
 		ticketBookingRepository.deleteById(id);
+	}
+
+	@Override
+	public List<TravelCustomer> getTravelCustomerByFlight(int id) {
+		return ticketBookingRepository.displayCustomersByFlightId(id);
 	}
 
 }

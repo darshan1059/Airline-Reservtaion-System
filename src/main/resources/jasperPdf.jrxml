@@ -87,9 +87,9 @@
 						<rightPen lineWidth="2.0" lineStyle="Solid" lineColor="#CCCCCC"/>
 					</box>
 					<staticText>
-						<reportElement mode="Opaque" x="0" y="30" width="542" height="93" forecolor="#313131" backcolor="#F0E986" uuid="4b6c24b4-fbf2-45b5-b49f-755805b427ee"/>
+						<reportElement mode="Opaque" x="9" y="39" width="520" height="100" forecolor="#313131" backcolor="#F0E986" uuid="4b6c24b4-fbf2-45b5-b49f-755805b427ee"/>
 						<textElement textAlignment="Justified" verticalAlignment="Top">
-							<font fontName="SansSerif" size="12" isBold="true"/>
+							<font size="12" isBold="true"/>
 						</textElement>
 						<text><![CDATA[1. Make Sure You are fully/partially vaccinated or Must carry CRP test report of last 72 hrs.
 2. Mask is mandatory.
@@ -98,72 +98,60 @@
 5. Don't carry any harmful gadget.]]></text>
 					</staticText>
 					<textField>
-						<reportElement x="125" y="156" width="100" height="21" forecolor="#4D4D4D" uuid="40e3b28b-9861-4891-9e7d-d68d6d3a24c6">
+						<reportElement x="114" y="161" width="97" height="21" forecolor="#4D4D4D" uuid="40e3b28b-9861-4891-9e7d-d68d6d3a24c6">
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 						</reportElement>
-						<textElement verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
+						<textElement verticalAlignment="Middle"/>
 						<textFieldExpression><![CDATA[$P{ticketCost}]]></textFieldExpression>
 					</textField>
 					<textField>
-						<reportElement x="121" y="191" width="118" height="30" forecolor="#4D4D4D" uuid="739ea23b-4c82-412c-a76d-5112c07ef679">
+						<reportElement x="116" y="193" width="118" height="24" forecolor="#4D4D4D" uuid="739ea23b-4c82-412c-a76d-5112c07ef679">
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						</reportElement>
-						<textElement verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
+						<textElement verticalAlignment="Middle"/>
 						<textFieldExpression><![CDATA[$P{cancellationCharge}]]></textFieldExpression>
 					</textField>
 					<textField>
-						<reportElement x="361" y="158" width="168" height="21" forecolor="#4D4D4D" uuid="85ef2cf7-acc5-4670-8b8b-4150ed4cb1a9">
+						<reportElement x="339" y="156" width="180" height="21" forecolor="#4D4D4D" uuid="85ef2cf7-acc5-4670-8b8b-4150ed4cb1a9">
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 						</reportElement>
-						<textElement verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
+						<textElement verticalAlignment="Middle"/>
 						<textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
 					</textField>
 					<textField>
-						<reportElement x="381" y="193" width="148" height="31" forecolor="#4D4D4D" uuid="7c118796-a5d9-420a-84f9-46f2d34223bf">
+						<reportElement x="379" y="193" width="150" height="30" forecolor="#4D4D4D" uuid="7c118796-a5d9-420a-84f9-46f2d34223bf">
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						</reportElement>
-						<textElement verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
+						<textElement verticalAlignment="Middle"/>
 						<textFieldExpression><![CDATA[$P{phoneNumber}]]></textFieldExpression>
 					</textField>
 					<staticText>
-						<reportElement x="11" y="154" width="101" height="21" forecolor="#4D4D4D" uuid="ffed5a65-12b5-488f-9992-718abe3fe738">
+						<reportElement x="56" y="161" width="58" height="21" forecolor="#4D4D4D" uuid="ffed5a65-12b5-488f-9992-718abe3fe738">
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
-						<textElement textAlignment="Left" verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
-						<text><![CDATA[Ticket Cost:]]></text>
+						<textElement textAlignment="Left" verticalAlignment="Middle"/>
+						<text><![CDATA[Ticket Cost :]]></text>
 					</staticText>
 					<staticText>
-						<reportElement x="11" y="191" width="101" height="30" forecolor="#4D4D4D" uuid="d50ee4f9-4461-4d58-8258-9d7761e3b064">
+						<reportElement x="15" y="193" width="101" height="24" forecolor="#4D4D4D" uuid="d50ee4f9-4461-4d58-8258-9d7761e3b064">
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 						</reportElement>
-						<textElement textAlignment="Left" verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
-						<text><![CDATA[Cancellation Charge:-]]></text>
+						<textElement textAlignment="Left" verticalAlignment="Middle"/>
+						<text><![CDATA[Cancellation Charge :]]></text>
 					</staticText>
 					<staticText>
 						<reportElement x="267" y="156" width="82" height="21" forecolor="#4D4D4D" uuid="c19bcc89-46de-4cb9-a442-96584b0ad2fc">
@@ -171,10 +159,8 @@
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
-						<textElement textAlignment="Left" verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
-						<text><![CDATA[Booking email:-]]></text>
+						<textElement textAlignment="Left" verticalAlignment="Middle"/>
+						<text><![CDATA[Booking email :]]></text>
 					</staticText>
 					<staticText>
 						<reportElement x="265" y="193" width="124" height="30" forecolor="#4D4D4D" uuid="17d0419c-2106-4943-87fd-c3ce6f248ee6">
@@ -183,38 +169,36 @@
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
-						<textElement textAlignment="Left" verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
-						<text><![CDATA[Booking phoneNumber:-]]></text>
+						<textElement textAlignment="Left" verticalAlignment="Middle"/>
+						<text><![CDATA[Booking phoneNumber :]]></text>
 					</staticText>
 					<staticText>
 						<reportElement mode="Opaque" x="0" y="-1" width="542" height="31" backcolor="#C4C2FF" uuid="80c6b9af-8123-42ca-97a3-f96802a2178d"/>
 						<textElement verticalAlignment="Middle">
-							<font fontName="SansSerif" size="16" isBold="true"/>
+							<font size="16" isBold="true"/>
 						</textElement>
 						<text><![CDATA[Please Have A Look Before You Go In Sky]]></text>
 					</staticText>
 					<staticText>
-						<reportElement x="75" y="263" width="224" height="28" forecolor="#4D4D4D" uuid="27059433-2480-46f2-8b96-693a318bc743">
+						<reportElement x="38" y="267" width="281" height="28" forecolor="#4D4D4D" uuid="27059433-2480-46f2-8b96-693a318bc743">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Left" verticalAlignment="Middle">
-							<font fontName="SansSerif" size="14" isBold="true"/>
+							<font fontName="Verdana" size="16" isBold="true"/>
 						</textElement>
 						<text><![CDATA[Passenger Number Reference :]]></text>
 					</staticText>
 					<textField>
-						<reportElement x="301" y="263" width="179" height="28" forecolor="#4D4D4D" uuid="01eaf827-57aa-4fa3-93b2-eda8280ce07f">
+						<reportElement x="319" y="267" width="173" height="28" forecolor="#4D4D4D" uuid="01eaf827-57aa-4fa3-93b2-eda8280ce07f">
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						</reportElement>
 						<textElement verticalAlignment="Middle">
-							<font fontName="SansSerif" size="14" isBold="true"/>
+							<font size="16" isBold="true"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{pnrNumber}]]></textFieldExpression>
 					</textField>
@@ -241,7 +225,7 @@
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Center" verticalAlignment="Bottom">
-							<font fontName="SansSerif" size="10"/>
+							<font size="10"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{flightName}]]></textFieldExpression>
 					</textField>
@@ -250,14 +234,14 @@
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Center">
-							<font fontName="SansSerif" size="9"/>
+							<font size="9"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{flightNumber}]]></textFieldExpression>
 					</textField>
 					<textField>
 						<reportElement x="120" y="19" width="142" height="22" forecolor="#4D4D4D" uuid="f144942d-0e31-41c3-81d2-af288ddadd81"/>
 						<textElement textAlignment="Right" verticalAlignment="Bottom">
-							<font fontName="SansSerif" size="12"/>
+							<font size="12"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{source}]]></textFieldExpression>
 					</textField>
@@ -268,7 +252,7 @@
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Right" verticalAlignment="Top">
-							<font fontName="SansSerif" size="20" isBold="true"/>
+							<font size="20" isBold="true"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{departure}]]></textFieldExpression>
 					</textField>
@@ -278,7 +262,7 @@
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Right" verticalAlignment="Top">
-							<font fontName="SansSerif" size="12"/>
+							<font size="12"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{datedepart}]]></textFieldExpression>
 					</textField>
@@ -288,7 +272,7 @@
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Right" verticalAlignment="Top">
-							<font fontName="SansSerif" size="12"/>
+							<font size="12"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{airportdepart}]]></textFieldExpression>
 					</textField>
@@ -297,7 +281,7 @@
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Center" verticalAlignment="Bottom">
-							<font fontName="SansSerif" size="14"/>
+							<font size="14"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{duration}]]></textFieldExpression>
 					</textField>
@@ -306,7 +290,7 @@
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Center" verticalAlignment="Top">
-							<font fontName="SansSerif" size="14"/>
+							<font size="14"/>
 						</textElement>
 						<textFieldExpression><![CDATA["Non-stop"]]></textFieldExpression>
 					</textField>
@@ -318,7 +302,7 @@
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Left" verticalAlignment="Bottom">
-							<font fontName="SansSerif" size="12"/>
+							<font size="12"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{destination}]]></textFieldExpression>
 					</textField>
@@ -330,7 +314,7 @@
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Left" verticalAlignment="Top">
-							<font fontName="SansSerif" size="20" isBold="true"/>
+							<font size="20" isBold="true"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{arrival}]]></textFieldExpression>
 					</textField>
@@ -342,7 +326,7 @@
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Left" verticalAlignment="Top">
-							<font fontName="SansSerif" size="12"/>
+							<font size="12"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{datearrive}]]></textFieldExpression>
 					</textField>
@@ -354,19 +338,17 @@
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Left" verticalAlignment="Top">
-							<font fontName="SansSerif" size="12"/>
+							<font size="12"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{airportarrive}]]></textFieldExpression>
 					</textField>
 					<textField>
-						<reportElement x="424" y="2" width="87" height="20" forecolor="#4D4D4D" uuid="a5e0a05a-0656-43d1-80e9-d02aa5717af7"/>
-						<textElement textAlignment="Center" verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
+						<reportElement x="424" y="2" width="87" height="18" forecolor="#4D4D4D" uuid="a5e0a05a-0656-43d1-80e9-d02aa5717af7"/>
+						<textElement textAlignment="Center" verticalAlignment="Middle"/>
 						<textFieldExpression><![CDATA[$P{bookingId}]]></textFieldExpression>
 					</textField>
 					<staticText>
-						<reportElement x="281" y="61" width="110" height="20" uuid="20d0048b-c2b8-43ab-93b2-89405ba5efb9">
+						<reportElement x="281" y="61" width="109" height="20" uuid="20d0048b-c2b8-43ab-93b2-89405ba5efb9">
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 						</reportElement>
@@ -379,9 +361,7 @@
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 						</reportElement>
-						<textElement textAlignment="Right" verticalAlignment="Middle">
-							<font fontName="SansSerif"/>
-						</textElement>
+						<textElement textAlignment="Right" verticalAlignment="Middle"/>
 						<text><![CDATA[Booking Id:-]]></text>
 					</staticText>
 				</frame>

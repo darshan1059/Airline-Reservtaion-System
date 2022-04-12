@@ -5,7 +5,7 @@
 		</div>
 		<div class="header-subject-3">
 		<c:choose>
-			<c:when test='${role}'>
+			<c:when test="${role}">
 				<a href="/getAllCustomer" class="header-subject-3-1">Customer</a> 
 				<a href="/getAllFlight/${0}" class="header-subject-3-2">Flight Details</a> 
 				<a href="/getAllSeat" class="header-subject-3-3">Seats</a> 

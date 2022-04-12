@@ -11,19 +11,20 @@ import com.app.pojos.Customer;
 import com.app.security.CustomCustomerUserDetails;
 
 @Service
-public class CustomerUserDetails implements UserDetailsService {
-	
+public class CustomerUserDetails implements UserDetailsService 
+{
 	@Autowired
 	private CustomerRepository customerRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		/* System.out.println(username); */
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException 
+	{
 		Customer customer = customerRepository.findByUsername(username);
-		if (customer == null) {
+		
+		if (customer == null) 
+		{
 			throw new UsernameNotFoundException("User details not found for the user : " + username);
 		}
-		/* System.out.println(customer.size()); */
 		return new CustomCustomerUserDetails(customer);
 	}
 

@@ -2,14 +2,8 @@ package com.app.exception;
 
 public class FlightDetailsException extends RuntimeException{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
 	public FlightDetailsException() {
 		super();
 		// TODO Auto-generated constructor stub

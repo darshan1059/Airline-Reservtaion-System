@@ -2,12 +2,11 @@ package com.app.util;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.app.dto.Search;
 import com.app.enums.SeatClass;
-import com.app.pojos.Search;
 import com.app.pojos.SeatStatus;
 
 import net.bytebuddy.utility.RandomString;

@@ -19,7 +19,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.app.services.CustomOAuth2UserService;
 import com.app.services.CustomerUserDetails;
 
-//@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)

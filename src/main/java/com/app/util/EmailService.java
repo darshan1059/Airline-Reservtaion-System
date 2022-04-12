@@ -16,16 +16,15 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
-import com.app.pojos.Contact;
+import com.app.dto.Contact;
+import com.app.dto.PropertyFileReader;
 import com.app.pojos.Customer;
 import com.app.pojos.FlightDetails;
-import com.app.pojos.PropertyFileReader;
 import com.app.pojos.TicketBooking;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import net.bytebuddy.utility.RandomString;
 
 @Service
 public class EmailService {

@@ -33,8 +33,8 @@
 											required placeholder="Enter your username here" />
 									</div>
 									<div class="form-group mx-0">
-										<label for="userPassword">Password</label> <input
-											type="password" name="password" class="form-control mx-0"
+										<label for="userPassword">Password</label> 
+										<input type="password" name="password" class="form-control mx-0"
 											required placeholder="Enter your password here" />
 									</div>
 									<button class="btn btn-info login-button" type="submit"
@@ -42,8 +42,8 @@
 										<i class="fas fa-sign-in-alt"> </i> <span>Log in</span>
 									</button>
 									<a href="/oauth2/authorization/google"
-                                        class="btn btn-info login-button-google"><i
-                                        class="fa-brands fa-google"></i><span>&nbsp;</span></a>
+										class="btn btn-info login-button-google"><i
+										class="fa-brands fa-google"></i><span>&nbsp;</span></a>
 								</form>
 								<div class="login">
 									<br> <br>
@@ -56,19 +56,19 @@
 
 							</div>
 							<div class="col-md-8">
-                                    <img class="spidy-3-sub-first-img2" src="images/logo2.png"
-                                        height="100" width="250" style="margin: 50px 230px;">
-                                        <p class="spidy-3-sub-second-text">This website is about
-                                    Airline Reservation System. Using this website your can book
-                                    flight tickets and travel all around the world. We provide 24 X
-                                    7 customer support. If you need any help or any assistance
-                                    regarding our services, Feel free to reach us or you can mail
-                                    us at jmkairline.service@gmail.com</p>
-                            </div>
+								<img class="spidy-3-sub-first-img2" src="images/logo2.png"
+									height="100" width="250" style="margin: 50px 230px;">
+								<p class="spidy-3-sub-second-text">This website is about
+									Airline Reservation System. Using this website your can book
+									flight tickets and travel all around the world. We provide 24 X
+									7 customer support. If you need any help or any assistance
+									regarding our services, Feel free to reach us or you can mail
+									us at jmkairline.service@gmail.com</p>
+							</div>
 						</div>
 					</div>
-			   </div>
 			</div>
+		</div>
 
 		<%@ include file="jspf/footer.jspf"%>
 

@@ -2,11 +2,12 @@ package com.app.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.app.dto.Search;
 import com.app.pojos.FlightDetails;
-import com.app.pojos.Search;
 
 @Service
 public interface FlightService{
@@ -26,7 +27,7 @@ public interface FlightService{
 	
 	public List<Integer> getAllFlightsId();
 	
-	public Iterable<FlightDetails> getAllFlight(Pageable Page);
+	public Page<FlightDetails> getAllFlight(Pageable page);
 
 	public long count();
 	

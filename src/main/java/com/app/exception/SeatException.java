@@ -1,22 +1,9 @@
-/**
- * 
- */
 package com.app.exception;
 
-/**
- * @author CodeSpy
- *
- */
 public class SeatException extends RuntimeException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
 	public SeatException() {
 		// TODO Auto-generated constructor stub
 	}

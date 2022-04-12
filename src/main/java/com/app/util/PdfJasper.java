@@ -10,10 +10,10 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
+import com.app.dto.Search;
 import com.app.pojos.Airport;
 import com.app.pojos.CreditCard;
 import com.app.pojos.FlightDetails;
-import com.app.pojos.Search;
 import com.app.pojos.Seat;
 import com.app.pojos.TicketBooking;
 import com.app.pojos.TravelCustomer;
@@ -35,9 +35,11 @@ public class PdfJasper
 		// Enter path, where you want to store your PDF file
 		// Example :- D:\\pdfrepo
 		String path = "G:\\pdfrepo";
+		//String path = "${user.dir}\\src\\pdf";
 		// Enter path of the image to show in the pdf
 		// Example :- C:\\Users\\xxx\\xx\\xx\\xx\\xx\\xx\\xx\\xx\\xx\\
 		String imagePath = "G:\\images\\" + flight.getImageName();
+		//String imagePath = "${user.dir}//src//images//" +flight.getImageName();
 		List<TravelCustomer> travelCustomer = ticket.getTravelCustomer();
 		List<TravelCustomer> tempCustomer = new ArrayList<TravelCustomer>();
 		tempCustomer.add(new TravelCustomer());

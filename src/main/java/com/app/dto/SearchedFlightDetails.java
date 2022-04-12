@@ -1,9 +1,10 @@
-/**
- * 
- */
-package com.app.pojos;
+package com.app.dto;
 
 import java.util.List;
+
+import com.app.pojos.Airport;
+import com.app.pojos.FlightDetails;
+import com.app.pojos.Seat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

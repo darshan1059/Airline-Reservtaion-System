@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.dto.Search;
+import com.app.dto.SearchedFlightDetails;
 import com.app.pojos.Airport;
 import com.app.pojos.FlightDetails;
-import com.app.pojos.Search;
-import com.app.pojos.SearchedFlightDetails;
 import com.app.pojos.Seat;
 import com.app.services.AirportService;
 import com.app.services.FlightService;

@@ -1,5 +1,5 @@
 
-package com.app.pojos;
+package com.app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

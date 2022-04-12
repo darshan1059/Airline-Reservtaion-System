@@ -34,20 +34,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.app.dto.Contact;
+import com.app.dto.PropertyFileReader;
+import com.app.dto.Search;
+import com.app.dto.SearchedFlightDetails;
 import com.app.enums.SeatClass;
 import com.app.pojos.Airport;
-import com.app.pojos.Contact;
 import com.app.pojos.CreditCard;
 import com.app.pojos.Customer;
 import com.app.pojos.FlightDetails;
-import com.app.pojos.PropertyFileReader;
-import com.app.pojos.Search;
-import com.app.pojos.SearchedFlightDetails;
 import com.app.pojos.Seat;
 import com.app.pojos.SeatStatus;
 import com.app.pojos.TicketBooking;
 import com.app.pojos.TravelCustomer;
-import com.app.pojos.User;
 import com.app.services.AirportService;
 import com.app.services.CustomerService;
 import com.app.services.FlightService;
@@ -55,7 +54,6 @@ import com.app.services.SearchedFlightDetailsService;
 import com.app.services.SeatService;
 import com.app.services.SeatStatusService;
 import com.app.services.TicketBookingService;
-import com.app.util.DateConversion;
 import com.app.util.EmailService;
 import com.app.util.ExtraUtilityWork;
 import com.app.util.PdfJasper;
@@ -95,9 +93,7 @@ public class PublicUserController
 
 	@Autowired
 	private PropertyFileReader propertyFileReader;
-	
-	@Autowired
-	private DateConversion dateUtil;
+
 	
 	@Autowired
 	private AirportService airportService;
@@ -245,15 +241,15 @@ public class PublicUserController
 			ticket.getTravelCustomer().get(i).setCabin("7 Kg");
 			ticket.getTravelCustomer().get(i).setCheckIn("15 Kg");
 			if (classOfJourney.equals(SeatClass.ECONOMY.label)) {
-				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getEconomySeatsBooked() + i + "E");
+				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getEconomySeatsBooked() + (i+1) + "E");
 			} else if (classOfJourney.equals(SeatClass.BASIC_ECONOMY.label)) {
-				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getBasicEconomySeatsBooked() + i + "BE");
+				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getBasicEconomySeatsBooked() + (i+1) + "BE");
 			} else if (classOfJourney.equals(SeatClass.PREMIUM_ECONOMY.label)) {
-				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getPremiumEconomySeatsBooked() + i + "PE");
+				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getPremiumEconomySeatsBooked() + (i+1) + "PE");
 			} else if (classOfJourney.equals(SeatClass.BUSINESS.label)) {
-				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getBusinessSeatsBooked() + i + "B");
+				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getBusinessSeatsBooked() + (i+1) + "B");
 			} else {
-				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getFirstSeatsBooked() + i + "F");
+				ticket.getTravelCustomer().get(i).setSeatNumber(seatStatus.getFirstSeatsBooked() + (i+1) + "F");
 			}
 		}
 
@@ -298,6 +294,7 @@ public class PublicUserController
 			tempTrav.add(cust);
 		}
 		this.ticket.setTravelCustomer(tempTrav);
+		this.ticket.setFlight(flight);
 		ticketBookingService.saveTicketDetails(this.ticket);
 		model.addAttribute("ticketBooking", ticket);
 		model.addAttribute("credit", credit);

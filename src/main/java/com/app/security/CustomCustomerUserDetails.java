@@ -10,10 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.pojos.Customer;
 
-/**
- * @author CodeSpy
- *
- */
 public class CustomCustomerUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 1L;

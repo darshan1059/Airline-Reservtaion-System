@@ -5,14 +5,9 @@ import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-
-import com.app.pojos.User;
  
 public class CustomOAuth2User implements OAuth2User, Serializable {
  
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -905149569211094868L;
 	private OAuth2User oauth2User;
      

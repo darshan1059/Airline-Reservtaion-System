@@ -3,29 +3,23 @@
  */
 package com.app.controller;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -45,7 +39,7 @@ import com.app.services.TravelCustomerService;
 @SessionAttributes({ "role" })
 public class AdminController 
 {
-	private static final int PAGE_SIZE = 5; // Number of rows to contain per page
+	private static final int PAGE_SIZE = 10; // Number of rows to contain per page
     private long totalFlightsCount; // number of rows in Database
     
 	@Autowired
@@ -76,35 +70,42 @@ public class AdminController
 		return "GetAllCustomer";
 	}
 
-	private PageRequest gotoPage(int page) 
-    {
-        PageRequest request = PageRequest.of(page, PAGE_SIZE, Sort.Direction.ASC, "flightId");
-        return request;
-    }
+	/*
+	 * private Pageable gotoPage(int page) { Pageable request = PageRequest.of(page,
+	 * PAGE_SIZE, Sort.Direction.ASC, "flightId"); return request; }
+	 */
 	
 	@GetMapping("/getAllFlight/{pageNo}")
-	public String adminAllFlightGet(ModelMap model, Authentication authentication, HttpSession session, @RequestParam(value = "pageNo", required = false, defaultValue = "0") String pageNo) 
+	public String adminAllFlightGet(ModelMap model, Authentication authentication, HttpSession session, @PathVariable String pageNo) 
 	{
 		//model.addAttribute("flightList", flightService.getAllFlightDetails());
 		//return "GetAllFlight";
 	
         int lastPageNo;
         int gotoPageNo = Integer.parseInt(pageNo);
-        List<FlightDetails> allFlights = new ArrayList<FlightDetails>();
-        //session.setAttribute("currentPageNo", 0);
-//        for (FlightDetails f: flightService.getAllFlight(gotoPage(gotoPageNo))) // fetches rows from Database as per Page No
-//        {
-//            allFlights.add(f);
-//        }
         
-        flightService.getAllFlight(gotoPage(gotoPageNo)).forEach(f -> allFlights.add(f));
+        
+        Set<FlightDetails> allFlights = new LinkedHashSet<FlightDetails>();
+//		session.setAttribute("currentPageNo", 0);
+        for (FlightDetails f: flightService.getAllFlight(PageRequest.of(gotoPageNo, PAGE_SIZE, Sort.Direction.ASC, "flightId"))) // fetches rows from Database as per Page No
+        {
+            allFlights.add(f);
+        }
+        
+        //flightService.getAllFlight(gotoPage(gotoPageNo)).forEach(f -> allFlights.add(f));
 
         totalFlightsCount = flightService.count(); //total no of flights
         if (totalFlightsCount % PAGE_SIZE != 0)
             lastPageNo = (int)(totalFlightsCount / PAGE_SIZE) + 1; // get last page No (zero based)
         else
             lastPageNo = (int)(totalFlightsCount / PAGE_SIZE);
-
+        
+        System.out.println("GoToPageNo "+gotoPageNo);
+        System.out.println("PageNo "+pageNo);
+        System.out.println("LastPageNo "+lastPageNo);
+        System.out.println("Set "+allFlights);
+        System.out.println("Count "+totalFlightsCount);
+        
         model.addAttribute("lastPageNo", lastPageNo);
         model.addAttribute("flightList", allFlights);
         return "GetAllFlight";
@@ -249,6 +250,14 @@ public class AdminController
 		model.addAttribute("ticketBookingDetails", ticketBookingService.getAllTicketBookingDetails());
 		return "GetAllTicketBooking";
 	}
+	
+    @PostMapping("/getallticketbooking")
+    public String adminDisplayBookingsByFlightId(@RequestParam int flightId, ModelMap map)
+    {
+        map.addAttribute("travelCustomerList", ticketBookingService.getTravelCustomerByFlight(flightId));
+        map.addAttribute("flightId", flightId);
+        return "GetTravelCustomerByFlight";
+    }	
 
 	@GetMapping("/deleteticketbooking")
 	public String adminTicketBookingDeleteGet(@RequestParam int id, ModelMap model) 

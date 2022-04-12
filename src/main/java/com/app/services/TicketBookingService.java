@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.app.pojos.TicketBooking;
+import com.app.pojos.TravelCustomer;
 
 @Service
 public interface TicketBookingService {
@@ -22,5 +23,7 @@ public interface TicketBookingService {
 	public List<TicketBooking> getTicketByCustomerId(Integer id);
 	
 	public List<TicketBooking> getTicketByUserEmail(String useremail);
+	
+    public List<TravelCustomer> getTravelCustomerByFlight(int id);
 
 }

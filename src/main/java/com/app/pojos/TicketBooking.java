@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -51,6 +53,10 @@ public class TicketBooking implements Serializable
 	
 	@Column(name = "booking_id")
 	private String bookingId;
+	
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="flightId", nullable=false)
+    private FlightDetails flight;
 
 	@OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<TravelCustomer> travelCustomer;

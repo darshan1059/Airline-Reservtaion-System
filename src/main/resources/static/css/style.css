@@ -1092,6 +1092,12 @@ tr:nth-child(even) {
 }
 /*Table Design Admin End*/
 
+.container-pass-details{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
 /*Contact Page Design Start*/
 .inner-page-sub-1{
 	border: 1px solid #919191;

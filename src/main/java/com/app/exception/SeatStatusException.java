@@ -1,12 +1,5 @@
-/**
- * 
- */
 package com.app.exception;
 
-/**
- * @author CodeSpy
- *
- */
 public class SeatStatusException extends RuntimeException {
 
 	/**

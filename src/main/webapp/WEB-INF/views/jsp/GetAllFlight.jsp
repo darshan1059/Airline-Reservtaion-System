@@ -35,7 +35,7 @@
 								<c:forEach items="${flightList}" var="flightDetails">
 									<tr>
 										<td><img class="admin-flight-icon"
-											src="images/icons/${flightDetails.imageName}" /></td>
+											src="/images/icons/${flightDetails.imageName}" /></td>
 										<td>${flightDetails.flightNumber}</td>
 										<td>${flightDetails.flightName}</td>
 										<td>${flightDetails.source}</td>
@@ -54,9 +54,11 @@
 							</table>
 						</c:otherwise>
 					</c:choose>
-					<c:forEach var="i" begin="0" end="${ lastPageNo-1 }" >
-						<a href="${ i }" class="btn btn-primary mx-1">${ i+1 }</a>    	<!-- Displaying Page No -->
+					<a href="${0}" class="btn btn-primary mx-1">First</a>
+					<c:forEach var="i" begin="0" end="${lastPageNo-1}" >
+						<a href="${i}" class="btn btn-primary mx-1">${i+1}</a>    	<!-- Displaying Page No -->
 					</c:forEach>
+					<a href="${lastPageNo-1}" class="btn btn-primary mx-1">Last</a>
 				</div>
 			</div>
 		</div>

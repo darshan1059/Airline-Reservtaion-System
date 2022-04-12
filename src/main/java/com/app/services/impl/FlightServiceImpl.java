@@ -1,20 +1,18 @@
 package com.app.services.impl;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.FlightDetailsRepository;
+import com.app.dto.Search;
 import com.app.exception.FlightDetailsException;
 import com.app.pojos.FlightDetails;
-import com.app.pojos.Search;
 import com.app.services.FlightService;
 
 @Service
@@ -123,7 +121,7 @@ public class FlightServiceImpl implements FlightService {
 	}
 
 	@Override
-	public Iterable<FlightDetails> getAllFlight(Pageable page) {
+	public Page<FlightDetails> getAllFlight(Pageable page) {
 		return flightDetailsRepository.findAll(page);
 	}
 
@@ -131,5 +129,4 @@ public class FlightServiceImpl implements FlightService {
 	public long count() {
 		return flightDetailsRepository.count();
 	}
-
 }
