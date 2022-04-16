@@ -18,7 +18,7 @@
 								</div>
 								<div class="col">
 									<form:input path="seatClass" type="text" class="form-control"
-										required="true" />
+										required="true" readonly="true"/>
 									<form:errors path="seatClass" cssClass="text-warning" />
 								</div>
 							</div>
@@ -64,7 +64,7 @@
 								</div>
 							</div>
 							<div class="form-row pt-4">
-								<div class="">
+								<div class="col">
 									<button type="submit" value="Update" id="submit"
 										class="btn btn-success btn-lg">Update</button>
 								</div>

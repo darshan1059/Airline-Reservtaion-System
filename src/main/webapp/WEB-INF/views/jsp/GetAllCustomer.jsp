@@ -7,6 +7,9 @@
 		<div class="process-page">
 			<div class="inner-page">
 				<div class="admin-customer-page">
+				<c:url value="/getAllCustomer" var="pagedLink">
+						<c:param name="p" value="~" />
+					</c:url>
 					<c:choose>
 						<c:when test="${empty customerList}">
 							<div class="flightDataAvailable">
@@ -43,7 +46,14 @@
 							</table>
 						</c:otherwise>
 					</c:choose>
-					<br />
+					<br>
+					<a href="${0}" class="btn btn-primary mx-1">First</a>
+					<c:forEach var="i" begin="0" end="${lastPageNo-1}" >
+						<a href="${i}" class="btn btn-primary mx-1">${i+1}</a>    	<!-- Displaying Page No -->
+					</c:forEach>
+					<a href="${lastPageNo-1}" class="btn btn-primary mx-1">Last</a>
+					<br>
+					<br>
 					<a type="button" class="btn btn-primary btn-lg" href="/addcustomer">Add
 						Customer</a>
 				</div>

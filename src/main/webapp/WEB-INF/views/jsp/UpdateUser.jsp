@@ -89,7 +89,7 @@
 								</div>
 							</div>
 							<div class="form-row pt-4">
-								<div class="">
+								<div class="col">
 									<button type="submit" value="Update" id="submit"
 										class="btn btn-success btn-lg">Update</button>
 								</div>

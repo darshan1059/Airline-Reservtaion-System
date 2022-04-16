@@ -1,16 +1,16 @@
 <nav>
 	<div class="nav-header">
 		<div class="header-subject-1">
-			<a href="/"><img src="/images/logo2.png" style="width: 30%;"></a>
+			<a href="/"><img src="/images/logo.png" style="width: 30%;"></a>
 		</div>
-		<div class="header-subject-3">
+		<div class="header-subject-4">
 		<c:choose>
 			<c:when test="${role}">
-				<a href="/getAllCustomer" class="header-subject-3-1">Customer</a> 
+				<a href="/getAllCustomer/${0}" class="header-subject-3-1">Customer</a> 
 				<a href="/getAllFlight/${0}" class="header-subject-3-2">Flight Details</a> 
-				<a href="/getAllSeat" class="header-subject-3-3">Seats</a> 
-				<a href="/getallairport" class="header-subject-3-4-1">Airport</a> 
-				<a href="getallticketbooking" class="header-subject-3-4-1">Ticket Booking</a> 
+				<a href="/getAllSeat/${0}" class="header-subject-3-3">Seats</a> 
+				<a href="/getAllAirport/${0}" class="header-subject-3-4-1">Airport</a> 
+				<a href="/getallticketbooking" class="header-subject-3-4-1">Ticket Booking</a> 
 			</c:when>
 			
 		</c:choose>		

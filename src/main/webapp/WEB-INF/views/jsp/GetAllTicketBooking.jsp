@@ -9,6 +9,7 @@
 				<div class="admin-customer-page">
 					<div class="small-3 columns">
 						<form action="/getallticketbooking" method="post">
+						<label>Enter Flight Id</label>&nbsp;
 							<input type="number" id="txt" name="flightId"> <input
 								type="submit" class="btn btn-primary btn-lg mx-5"
 								value="Search Bookings" />

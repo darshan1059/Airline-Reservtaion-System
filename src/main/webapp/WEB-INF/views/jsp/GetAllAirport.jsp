@@ -7,6 +7,9 @@
 		<div class="process-page">
 			<div class="inner-page">
 				<div class="admin-customer-page">
+				<c:url value="/getAllAirport" var="pagedLink">
+				<c:param name="p" value="~"/>
+				</c:url>
 					<c:choose>
 						<c:when test="${empty airportList}">
 							<div class="flightDataAvailable">
@@ -41,6 +44,12 @@
 							</table>
 						</c:otherwise>
 					</c:choose>
+					<br>
+					<a href="${0}" class="btn btn-primary mx-1">First</a>
+					<c:forEach var="i" begin="0" end="${lastPageNumber-1}">
+						<a href="${i}" class="btn btn-primary mx-1">${i+1}</a>
+					</c:forEach>
+					<a href="${lastPageNumber-1}" class="btn btn-primary mx-1">Last</a>
 				</div>
 				<br />
 				<a type="button" class="btn btn-primary btn-lg" href="/addairport">Add

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -27,7 +26,6 @@ import com.app.pojos.Airport;
 import com.app.pojos.Customer;
 import com.app.pojos.FlightDetails;
 import com.app.pojos.Seat;
-import com.app.services.AdminService;
 import com.app.services.AirportService;
 import com.app.services.CustomerService;
 import com.app.services.FlightService;
@@ -42,8 +40,12 @@ public class AdminController
 	private static final int PAGE_SIZE = 10; // Number of rows to contain per page
     private long totalFlightsCount; // number of rows in Database
     
-	@Autowired
-	private AdminService adminService;
+    private long totalCustomerCount;
+    
+    private long totalSeatCount;
+    
+    private long totalAirportCount;
+    
 	
 	@Autowired
 	private FlightService flightService;
@@ -63,36 +65,41 @@ public class AdminController
 	@Autowired
 	private TravelCustomerService travelCustomerService;
 
-	@GetMapping("/getAllCustomer")
-	public String adminCustomerGet(ModelMap model, Authentication authentication) 
+	@GetMapping("/getAllCustomer/{pageNo}")
+	public String adminCustomerGet(ModelMap model, Authentication authentication, @PathVariable String pageNo) 
 	{
-		model.addAttribute("customerList", adminService.getAllCustomerDetails());
+		int lastPageNo;
+		int goToPageNo = Integer.parseInt(pageNo);
+
+		Set<Customer> allCustomers = new LinkedHashSet<Customer>();
+		for (Customer c : customerService
+				.getAllCustomers(PageRequest.of(goToPageNo, PAGE_SIZE, Sort.Direction.ASC, "customerId"))) {
+			allCustomers.add(c);
+		}
+
+		totalCustomerCount = customerService.countCustomers();
+		if (totalCustomerCount % PAGE_SIZE != 0)
+			lastPageNo = (int) (totalCustomerCount / PAGE_SIZE) + 1;
+		else
+			lastPageNo = (int) (totalCustomerCount / PAGE_SIZE);
+
+		model.addAttribute("lastPageNo", lastPageNo);
+		model.addAttribute("customerList", allCustomers);
 		return "GetAllCustomer";
 	}
 
-	/*
-	 * private Pageable gotoPage(int page) { Pageable request = PageRequest.of(page,
-	 * PAGE_SIZE, Sort.Direction.ASC, "flightId"); return request; }
-	 */
-	
 	@GetMapping("/getAllFlight/{pageNo}")
 	public String adminAllFlightGet(ModelMap model, Authentication authentication, HttpSession session, @PathVariable String pageNo) 
-	{
-		//model.addAttribute("flightList", flightService.getAllFlightDetails());
-		//return "GetAllFlight";
-	
+	{	
         int lastPageNo;
         int gotoPageNo = Integer.parseInt(pageNo);
         
-        
         Set<FlightDetails> allFlights = new LinkedHashSet<FlightDetails>();
-//		session.setAttribute("currentPageNo", 0);
+
         for (FlightDetails f: flightService.getAllFlight(PageRequest.of(gotoPageNo, PAGE_SIZE, Sort.Direction.ASC, "flightId"))) // fetches rows from Database as per Page No
         {
             allFlights.add(f);
         }
-        
-        //flightService.getAllFlight(gotoPage(gotoPageNo)).forEach(f -> allFlights.add(f));
 
         totalFlightsCount = flightService.count(); //total no of flights
         if (totalFlightsCount % PAGE_SIZE != 0)
@@ -111,10 +118,23 @@ public class AdminController
         return "GetAllFlight";
     }
 
-	@GetMapping("/getAllSeat")
-	public String adminAllSeatGet(ModelMap model, Authentication authentication) 
+	@GetMapping("/getAllSeat/{pageNo}")
+	public String adminAllSeatGet(ModelMap model, Authentication authentication, @PathVariable String pageNo) 
 	{
-		model.addAttribute("seatList", seatService.getAllSeats());
+		int lastPageNo;
+		int gotoPageNo = Integer.parseInt(pageNo);
+		Set<Seat> allSeats = new LinkedHashSet<Seat>();
+		for (Seat s : seatService.getAllSeat(PageRequest.of(gotoPageNo, PAGE_SIZE, Sort.Direction.ASC, "seatId"))) {
+			allSeats.add(s);
+		}
+		totalSeatCount = seatService.countSeats();
+		if (totalFlightsCount % PAGE_SIZE != 0)
+			lastPageNo = (int) (totalSeatCount / PAGE_SIZE) + 1; // get last page No (zero based)
+		else
+			lastPageNo = (int) (totalSeatCount / PAGE_SIZE);
+
+		model.addAttribute("lastPageNo", lastPageNo);
+		model.addAttribute("seatList", allSeats);
 		return "GetAllSeat";
 	}
 
@@ -130,7 +150,7 @@ public class AdminController
 			ModelMap model) 
 	{
 		customerService.saveCustomerDetails(customer);
-		return "redirect:/getAllCustomer";
+		return "redirect:/getAllCustomer/0";
 	}
 
 	@GetMapping("/addcustomer")
@@ -145,14 +165,14 @@ public class AdminController
 			ModelMap model) 
 	{
 		customerService.saveCustomerDetails(customer);
-		return "redirect:/getAllCustomer";
+		return "redirect:/getAllCustomer/0";
 	}
 
 	@GetMapping("/deletecustomer")
 	public String adminDeleteCustomerGet(@RequestParam int id, ModelMap model) 
 	{
 		customerService.deleteCustomerById(id);
-		return "redirect:/getAllCustomer";
+		return "redirect:/getAllCustomer/0";
 	}
 
 	@GetMapping("/updateflight")
@@ -175,7 +195,7 @@ public class AdminController
 	public String admindeleteFlightGet(@RequestParam int id, ModelMap model) 
 	{
 		flightService.deleteFlightById(id);
-		return "redirect:/getAllFlight";
+		return "redirect:/getAllFlight/0";
 	}
 
 	@GetMapping("/updateseat")
@@ -189,20 +209,35 @@ public class AdminController
 	public String adminUpdateSeatPost(@ModelAttribute("seat") Seat seat, BindingResult bindingResult, ModelMap model) 
 	{
 		seatService.saveSeat(seat);
-		return "redirect:/getAllSeat";
+		return "redirect:/getAllSeat/0";
 	}
 
 	@GetMapping("/deleteseat")
 	public String adminDeleteSeatGet(@RequestParam int id, ModelMap model) 
 	{
 		seatService.deleteSeatById(id);
-		return "redirect:/getAllSeat";
+		return "redirect:/getAllSeat/0";
 	}
 
-	@GetMapping("/getallairport")
-	public String adminAirportAllGet(ModelMap model) 
+	@GetMapping("/getAllAirport/{pageNo}")
+	public String adminAirportAllGet(ModelMap model, Authentication authentication, HttpSession session,
+			@PathVariable String pageNo) 
 	{
-		model.addAttribute("airportList", airportService.getAllAirportDetails());
+		int lastPageNumber;
+		int goToPageNumber = Integer.parseInt(pageNo);
+		Set<Airport> allAirports = new LinkedHashSet<Airport>();
+		for (Airport a : airportService
+				.getAllAirports(PageRequest.of(goToPageNumber, PAGE_SIZE, Sort.Direction.ASC, "airportId"))) {
+			allAirports.add(a);
+		}
+
+		totalAirportCount = airportService.countAirports();
+		if (totalAirportCount % PAGE_SIZE != 0)
+			lastPageNumber = (int) (totalAirportCount / PAGE_SIZE) + 1;
+		else
+			lastPageNumber = (int) (totalAirportCount / PAGE_SIZE);
+		model.addAttribute("lastPageNumber", lastPageNumber);
+		model.addAttribute("airportList", allAirports);
 		return "GetAllAirport";
 	}
 
@@ -218,14 +253,14 @@ public class AdminController
 			BindingResult bindingResult) 
 	{
 		airportService.saveAirportDetails(airport);
-		return "redirect:/getallairport";
+		return "redirect:/getAllAirport/0";
 	}
 
 	@GetMapping("/deleteairport")
 	public String adminAirportDeleteGet(@RequestParam int id, ModelMap model) 
 	{
 		airportService.deleteAirportDetailsById(id);
-		return "redirect:/getallairport";
+		return "redirect:/getAllAirport/0";
 	}
 
 	@GetMapping("/addairport")
@@ -241,7 +276,7 @@ public class AdminController
 			BindingResult bindingResult) 
 	{
 		airportService.saveAirportDetails(airport);
-		return "redirect:/getallairport";
+		return "redirect:/getAllAirport/0";
 	}
 
 	@GetMapping("/getallticketbooking")

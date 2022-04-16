@@ -9,12 +9,13 @@
 				<div class="container-edit-user">
 					<h3>Edit Flight Details</h3>
 					<br />
-					
+
 					<form:form method="post" modelAttribute="flightDetails">
 						<form:hidden path="flightId" />
 						<form:hidden path="imageName" />
 						<form:hidden path="extraFacility" />
 						<form:hidden path="duration" />
+						<form:hidden path="days" />
 						<div class="form-group">
 							<div class="row">
 								<div class="col">
@@ -33,7 +34,7 @@
 								</div>
 								<div class="col">
 									<form:input path="flightName" type="text" class="form-control"
-										required="true" />
+										required="true" readonly="true"/>
 									<form:errors path="flightName" cssClass="text-warning" />
 								</div>
 							</div>
@@ -68,7 +69,7 @@
 								</div>
 							</div>
 
-							<div class="row pt-3">
+							<%-- <div class="row pt-3">
 								<div class="col">
 									<form:label path="days">Days</form:label>
 								</div>
@@ -77,7 +78,7 @@
 										required="true" />
 									<form:errors path="days" cssClass="text-warning" />
 								</div>
-							</div>
+							</div> --%>
 							<div class="row pt-3">
 								<div class="col">
 									<form:label path="luggage">Luggage</form:label>
@@ -103,7 +104,7 @@
 									<form:label path="arrivalTime">Arrival Time</form:label>
 								</div>
 								<div class="col">
-									<form:input path="arrivalTime" type="text" class="form-control" 
+									<form:input path="arrivalTime" type="text" class="form-control"
 										required="true" />
 									<form:errors path="arrivalTime" cssClass="text-warning" />
 								</div>
@@ -113,8 +114,8 @@
 									<form:label path="departureDate">Departure Date</form:label>
 								</div>
 								<div class="col">
-									<form:input path="departureDate" type="text" class="form-control"
-										required="true" />
+									<form:input path="departureDate" type="text"
+										class="form-control" required="true" />
 									<form:errors path="departureDate" cssClass="text-warning" />
 								</div>
 							</div>
@@ -123,9 +124,9 @@
 									<form:label path="departureTime">Departure</form:label>
 								</div>
 								<div class="col">
-									<fmt:formatDate value=""/>
-									<form:input path="departureTime" type="text" class="form-control"
-										required="true" />
+									<fmt:formatDate value="" />
+									<form:input path="departureTime" type="text"
+										class="form-control" required="true" />
 									<form:errors path="departureTime" cssClass="text-warning" />
 								</div>
 							</div>

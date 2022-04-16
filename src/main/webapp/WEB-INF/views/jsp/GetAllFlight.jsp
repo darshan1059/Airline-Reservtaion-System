@@ -54,6 +54,7 @@
 							</table>
 						</c:otherwise>
 					</c:choose>
+					<br>
 					<a href="${0}" class="btn btn-primary mx-1">First</a>
 					<c:forEach var="i" begin="0" end="${lastPageNo-1}" >
 						<a href="${i}" class="btn btn-primary mx-1">${i+1}</a>    	<!-- Displaying Page No -->
